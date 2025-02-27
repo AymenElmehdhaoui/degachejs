@@ -20,12 +20,21 @@ const isValid = validateCIN('12345678'); // true
 - ✅ Support for all Tunisian carriers (Ooredoo, Orange, Tunisie Telecom)
 - 🔄 International format conversion
 - 📞 Smart formatting with country code
+- 🏢 Carrier detection
 
 ```typescript
-import { formatPhoneNumber } from 'degachejs';
+import { validatePhoneNumber, formatPhoneNumber, getCarrierInfo } from 'degachejs';
 
+// Validate phone number
+const isValid = validatePhoneNumber('20123456'); // true
+
+// Format phone number
 const formatted = formatPhoneNumber('20123456');
 console.log(formatted); // +216 20 123 456
+
+// Get carrier information
+const carrier = getCarrierInfo('20123456');
+console.log(carrier); // { name: 'Ooredoo', prefixes: ['2'] }
 ```
 
 ### Tax ID (Matricule Fiscal) 💼
@@ -50,6 +59,40 @@ import { validatePostalCode } from 'degachejs';
 const isValid = validatePostalCode('1000'); // true for Tunis
 ```
 
+### Bank Account (RIB) Validation 🏦
+```typescript
+import { validateRIB, getBankFromRIB } from 'degachejs';
+
+// Validate RIB
+const isValid = validateRIB('12345678901234567890');
+
+// Get bank information
+const bank = getBankFromRIB('12345678901234567890');
+console.log(bank); // { name: 'Bank Name', code: '12' }
+```
+
+### Date Formatting 📅
+```typescript
+import { formatDate } from 'degachejs';
+
+const formatted = formatDate(new Date());
+console.log(formatted); // Formatted date in Tunisian style
+```
+
+### Constants 📋
+```typescript
+import { BANKS, CARRIERS, GOVERNORATES } from 'degachejs';
+
+// Access list of Tunisian banks
+console.log(BANKS);
+
+// Access list of mobile carriers
+console.log(CARRIERS);
+
+// Access list of governorates
+console.log(GOVERNORATES);
+```
+
 ## 📦 Installation
 
 ```bash
@@ -67,7 +110,10 @@ import {
   validateCIN,
   formatPhoneNumber,
   validateTaxID,
-  formatCurrency
+  formatCurrency,
+  validateRIB,
+  getBankFromRIB,
+  formatDate
 } from 'degachejs';
 
 // Validate CIN
@@ -81,15 +127,16 @@ const isTaxIDValid = validateTaxID('1234567A/P/M/000');
 
 // Format currency
 const price = formatCurrency(1234.56, { symbol: true });
+
+// Validate RIB
+const isRIBValid = validateRIB('12345678901234567890');
+
+// Get bank information
+const bankInfo = getBankFromRIB('12345678901234567890');
+
+// Format date
+const formattedDate = formatDate(new Date());
 ```
-
-## 🌟 Features Coming Soon
-
-- 📍 Governorate and delegation utilities
-- 🏢 Company registry validation
-- 🏦 Bank account validation (RIB)
-- 📅 Hijri calendar conversion
-- 🗺️ Postal code to region mapping
 
 ## 🤝 Contributing
 

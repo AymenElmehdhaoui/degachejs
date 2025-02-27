@@ -1543,13 +1543,11 @@ export const GOVERNORATES = {
 /**
  * Mapping of postal codes to regions
  */
-export const POSTAL_CODES_MAP = Object.entries(GOVERNORATES).reduce<Record<string, keyof typeof GOVERNORATES>>(
-  (acc, [gov, data]) => {
-    data.postalCodes.forEach((code) => {
-      acc[code] = gov as keyof typeof GOVERNORATES;
-    });
-    return acc;
-  },
-  {}
-);
-
+export const POSTAL_CODES_MAP = Object.entries(GOVERNORATES).reduce<
+  Record<string, keyof typeof GOVERNORATES>
+>((acc, [gov, data]) => {
+  data.postalCodes.forEach((code) => {
+    acc[code] = gov as keyof typeof GOVERNORATES;
+  });
+  return acc;
+}, {});

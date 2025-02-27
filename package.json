@@ -8,7 +8,8 @@
     "build": "tsc",
     "test": "jest",
     "lint": "eslint src/**/*.ts",
-    "format": "prettier --write \"src/**/*.ts\""
+    "format": "prettier --write \"src/**/*.ts\"",
+    "prepublishOnly": "npm run build"
   },
   "keywords": [
     "tunisia",
@@ -18,8 +19,16 @@
     "phone",
     "address"
   ],
-  "author": "",
+  "author": "Khalid Rouissi <khalid.rouissi@example.com>",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/KhalidRouissi1/degachejs.git"
+  },
+  "bugs": {
+    "url": "https://github.com/KhalidRouissi1/degachejs/issues"
+  },
+  "homepage": "https://github.com/KhalidRouissi1/degachejs#readme",
   "devDependencies": {
     "@types/jest": "^29.5.12",
     "@types/lodash": "^4.14.202",
@@ -35,5 +44,10 @@
   },
   "dependencies": {
     "lodash": "^4.17.21"
-  }
+  },
+  "files": [
+    "dist",
+    "LICENSE",
+    "README.md"
+  ]
 }

@@ -1,3 +1,4 @@
+import { Bank } from "./../types/index";
 /**
  * Tunisian bank codes and information
  */

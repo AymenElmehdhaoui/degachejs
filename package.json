@@ -19,7 +19,7 @@
     "phone",
     "address"
   ],
-  "author": "Khalid Rouissi <khalid.rouissi@example.com>",
+  "author": "Khalid Rouissi <khalidrouissi@jeridschool.tech>",
   "license": "MIT",
   "repository": {
     "type": "git",
@@ -28,7 +28,7 @@
   "bugs": {
     "url": "https://github.com/KhalidRouissi1/degachejs/issues"
   },
-  "homepage": "https://github.com/KhalidRouissi1/degachejs#readme",
+  "homepage": "https://degachejs-docs.vercel.app/",
   "devDependencies": {
     "@types/jest": "^29.5.12",
     "@types/lodash": "^4.14.202",

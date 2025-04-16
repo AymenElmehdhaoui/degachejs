@@ -1,6 +1,4 @@
-import { COUNTRY_CODE } from "../constants/phone-number";
-import { validatePhoneNumber } from "../validators/phone-number";
-
+import { COUNTRY_CODE } from "../constants";
 /**
  * Formats a Tunisian phone number
  * @param phoneNumber - The phone number to format

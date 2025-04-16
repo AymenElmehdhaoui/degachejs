@@ -1,4 +1,4 @@
-import { POSTAL_CODES_MAP } from "../constants/regions";
+import { POSTAL_CODES_MAP } from "../constants";
 
 /**
  * Regular expression for postal code validation

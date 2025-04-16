@@ -12,6 +12,11 @@ export const formatDate = (
     day: "numeric",
   },
 ): string => {
-  const formatter = new Intl.DateTimeFormat("ar-TN", options);
+  const formatter = new Intl.DateTimeFormat(LOCALE, options);
   return formatter.format(date);
 };
+
+/**
+ * Date locale
+ */
+export const LOCALE = "ar-TN";

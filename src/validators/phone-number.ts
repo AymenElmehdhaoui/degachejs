@@ -14,6 +14,8 @@ const REGEX = {
  * @returns boolean indicating if the phone number is valid
  */
 export const validatePhoneNumber = (phoneNumber: string): boolean => {
+  if (!phoneNumber) return false;
+
   // Remove international prefix if present
   const normalizedNumber = phoneNumber.replace(/^\+216/, "");
 

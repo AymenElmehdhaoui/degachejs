@@ -4,6 +4,8 @@ module.exports = {
   testMatch: ['**/*.test.ts'],
   collectCoverage: true,
   coverageDirectory: 'coverage',
+  collectCoverageFrom: ["./src/**/*.ts", "!./src/**/index.ts"],
+  coveragePathIgnorePatterns: ["./src/types/*"],
   coverageThreshold: {
     global: {
       branches: 80,
@@ -12,4 +14,4 @@ module.exports = {
       statements: 80
     }
   }
-}; 
+};

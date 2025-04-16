@@ -1,7 +1,7 @@
 /**
  * Tunisian governorates with their postal codes and delegations
  */
-export const GOVERNORATES = {
+export const GOVERNORATES_META_DATA = {
   ARIANA: {
     code: "12",
     postalCodes: [
@@ -1543,11 +1543,41 @@ export const GOVERNORATES = {
 /**
  * Mapping of postal codes to regions
  */
-export const POSTAL_CODES_MAP = Object.entries(GOVERNORATES).reduce<
-  Record<string, keyof typeof GOVERNORATES>
+export const POSTAL_CODES_MAP = Object.entries(GOVERNORATES_META_DATA).reduce<
+  Record<string, keyof typeof GOVERNORATES_META_DATA>
 >((acc, [gov, data]) => {
   data.postalCodes.forEach((code) => {
-    acc[code] = gov as keyof typeof GOVERNORATES;
+    acc[code] = gov as keyof typeof GOVERNORATES_META_DATA;
   });
   return acc;
 }, {});
+
+/**
+ * Tunisian governorates and their codes
+ */
+export const GOVERNORATES = {
+  ARIANA: "12",
+  BEJA: "21",
+  BEN_AROUS: "13",
+  BIZERTE: "17",
+  GABES: "81",
+  GAFSA: "71",
+  JENDOUBA: "22",
+  KAIROUAN: "41",
+  KASSERINE: "42",
+  KEBILI: "73",
+  KEF: "23",
+  MAHDIA: "53",
+  MANOUBA: "14",
+  MEDENINE: "82",
+  MONASTIR: "52",
+  NABEUL: "15",
+  SFAX: "61",
+  SIDI_BOUZID: "43",
+  SILIANA: "24",
+  SOUSSE: "51",
+  TATAOUINE: "83",
+  TOZEUR: "72",
+  TUNIS: "11",
+  ZAGHOUAN: "16",
+} as const;

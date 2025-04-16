@@ -1,4 +1,4 @@
-import { CARRIERS, VALID_PREFIXES } from "../constants/phone-number";
+import { CARRIERS, VALID_PREFIXES } from "../constants";
 
 /**
  * Regular expressions for phone number validation

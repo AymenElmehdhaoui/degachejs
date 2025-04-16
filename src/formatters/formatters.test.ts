@@ -1,4 +1,5 @@
-import { formatPhoneNumber, formatCurrency, formatDate } from "./index";
+import { formatCurrency, formatDate } from "./index";
+import { formatPhoneNumber } from "./phone-number";
 
 describe("Formatters", () => {
   describe("formatPhoneNumber", () => {
@@ -7,9 +8,9 @@ describe("Formatters", () => {
       expect(formatPhoneNumber("50123456")).toBe("+216 50 123 456");
     });
 
-    it("should return original string for invalid phone numbers", () => {
-      expect(formatPhoneNumber("2012345")).toBe("2012345");
-      expect(formatPhoneNumber("201234567")).toBe("201234567");
+    it("should return null for invalid phone numbers", () => {
+      expect(formatPhoneNumber("2012345")).toBe(null);
+      expect(formatPhoneNumber("201234567")).toBe(null);
     });
   });
 

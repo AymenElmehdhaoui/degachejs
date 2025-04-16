@@ -1,6 +1,6 @@
-import { BANKS } from "../constants/banks";
-import { CARRIERS } from "../constants/phone-number";
-import { GOVERNORATES } from "../constants/regions";
+import { BANKS } from "../constants";
+import { CARRIERS } from "../constants";
+import { GOVERNORATES } from "../constants";
 
 /**
  * Type for Tunisian CIN (Carte d'Identité Nationale)

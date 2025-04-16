@@ -1,4 +1,4 @@
-import { BANKS } from "../constants/banks";
+import { BANKS } from "../constants";
 
 /**
  * Regular expressions for bank validation

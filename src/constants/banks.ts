@@ -1,4 +1,3 @@
-import { Bank } from "./../types/index";
 /**
  * Tunisian bank codes and information
  */
@@ -18,4 +17,13 @@ export const BANKS = {
   BTE: { code: "16", name: "Banque Tuniso-Emirats" },
   ZITOUNA: { code: "26", name: "Banque Zitouna" },
   POSTE: { code: "17", name: "La Poste Tunisienne" },
+} as const;
+
+/**
+ * Currency code and symbol
+ */
+export const CURRENCY = {
+  CODE: "TND",
+  SYMBOL: "د.ت",
+  NAME: "Tunisian Dinar",
 } as const;

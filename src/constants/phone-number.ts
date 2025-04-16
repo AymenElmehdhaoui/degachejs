@@ -31,3 +31,12 @@ export const VALID_PREFIXES = Array.from(
       .flat(),
   ),
 ) as readonly string[];
+
+/**
+ * Mobile carrier prefixes
+ */
+export const MOBILE_PREFIXES = {
+  OOREDOO: ["2", "5"],
+  ORANGE: ["4", "5"],
+  TELECOM: ["2", "9"],
+} as const;

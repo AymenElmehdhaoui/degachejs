@@ -1,4 +1,5 @@
 import type { CurrencyFormatOptions } from "../types";
+import { LOCALE } from "./date";
 
 /**
  * Formats a monetary amount in Tunisian Dinar
@@ -10,7 +11,7 @@ export const formatCurrency = (
   amount: number,
   options: CurrencyFormatOptions = {},
 ): string => {
-  const formatter = new Intl.NumberFormat("ar-TN", {
+  const formatter = new Intl.NumberFormat(LOCALE, {
     style: "currency",
     currency: "TND",
     currencyDisplay: options.code ? "code" : options.symbol ? "symbol" : "name",

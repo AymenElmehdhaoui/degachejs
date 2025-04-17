@@ -1,7 +1,7 @@
 /**
  * Regular expression for CIN validation
  */
-const CIN_REGEX = /^\d{8}$/;
+const CIN_REGEX = /^[01]\d{7}$/; // 0 or 1 followed by 7 digits to match the tunisian CIN format
 
 /**
  * Validates a Tunisian CIN (Carte d'Identité Nationale)

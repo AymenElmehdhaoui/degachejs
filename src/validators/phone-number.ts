@@ -1,4 +1,5 @@
 import { CARRIERS, VALID_PREFIXES } from "../constants";
+import { Carrier } from "../types";
 
 /**
  * Options for phone number validation
@@ -56,7 +57,7 @@ export const validatePhoneNumber = (
 export const getCarrierInfo = (
   phoneNumber: string,
   options: PhoneNumberValidationOptions = {}
-) => {
+): Carrier | null => {
   if (!validatePhoneNumber(phoneNumber, options)) return null;
 
   const normalizedNumber = phoneNumber.replace(/^\+216/, "");

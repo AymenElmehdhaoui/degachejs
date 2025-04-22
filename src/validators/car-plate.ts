@@ -28,7 +28,7 @@ export interface CarPlateValidationOptions {
    * - 'special': Special car plates (e.g., RS 123 تونس)
    * - 'any': Any valid car plate format (default)
    */
-  type?: 'standard' | 'special' | 'any';
+  type?: "standard" | "special" | "any";
 }
 
 /**
@@ -42,8 +42,10 @@ export interface CarPlateValidationOptions {
  */
 const normalizePlate = (carPlate: string): string => {
   // Only convert Latin characters to uppercase, leave Arabic as is
-  const uppercased = carPlate.replace(/[a-z]+/g, match => match.toUpperCase());
-  return uppercased.trim().replace(/\s+/g, ' ');
+  const uppercased = carPlate.replace(/[a-z]+/g, (match) =>
+    match.toUpperCase(),
+  );
+  return uppercased.trim().replace(/\s+/g, " ");
 };
 
 /**
@@ -54,20 +56,24 @@ const normalizePlate = (carPlate: string): string => {
  */
 export const validateCarPlate = (
   carPlate: string,
-  options: CarPlateValidationOptions = {}
+  options: CarPlateValidationOptions = {},
 ): boolean => {
   if (!carPlate) return false;
 
   // In strict mode, check for exact format without normalization
   if (options.strict) {
     // Check for extra spaces or incorrect format
-    if (carPlate !== carPlate.trim() || carPlate.includes('  ') ||
-        carPlate.includes('tun') || carPlate.includes('TUN')) {
+    if (
+      carPlate !== carPlate.trim() ||
+      carPlate.includes("  ") ||
+      carPlate.includes("tun") ||
+      carPlate.includes("TUN")
+    ) {
       return false;
     }
 
     // Make sure it contains the Arabic text "تونس"
-    if (!carPlate.includes('تونس')) {
+    if (!carPlate.includes("تونس")) {
       return false;
     }
   }
@@ -78,13 +84,13 @@ export const validateCarPlate = (
   // Determine which regex to use based on the type option
   let regex: RegExp;
   switch (options.type) {
-    case 'standard':
+    case "standard":
       regex = REGEX.STANDARD;
       break;
-    case 'special':
+    case "special":
       regex = REGEX.SPECIAL;
       break;
-    case 'any':
+    case "any":
     default:
       regex = REGEX.ANY;
       break;
@@ -101,21 +107,28 @@ export const validateCarPlate = (
  */
 export const getCarPlateInfo = (
   carPlate: string,
-  options: CarPlateValidationOptions = {}
-): { type: 'standard' | 'special'; components: Record<string, string> } | null => {
+  options: CarPlateValidationOptions = {},
+): {
+  type: "standard" | "special";
+  components: Record<string, string>;
+} | null => {
   // First validate the car plate with the same options
   if (!validateCarPlate(carPlate, options)) return null;
 
   // In strict mode, check for exact format without normalization
   if (options.strict) {
     // Check for extra spaces or incorrect format
-    if (carPlate !== carPlate.trim() || carPlate.includes('  ') ||
-        carPlate.includes('tun') || carPlate.includes('TUN')) {
+    if (
+      carPlate !== carPlate.trim() ||
+      carPlate.includes("  ") ||
+      carPlate.includes("tun") ||
+      carPlate.includes("TUN")
+    ) {
       return null;
     }
 
     // Make sure it contains the Arabic text "تونس"
-    if (!carPlate.includes('تونس')) {
+    if (!carPlate.includes("تونس")) {
       return null;
     }
   }
@@ -126,7 +139,7 @@ export const getCarPlateInfo = (
   const standardMatch = REGEX.STANDARD.exec(plateToCheck);
   if (standardMatch) {
     return {
-      type: 'standard',
+      type: "standard",
       components: {
         prefix: standardMatch[1],
         region: standardMatch[2],
@@ -139,7 +152,7 @@ export const getCarPlateInfo = (
   const specialMatch = REGEX.SPECIAL.exec(plateToCheck);
   if (specialMatch) {
     return {
-      type: 'special',
+      type: "special",
       components: {
         prefix: specialMatch[1],
         number: specialMatch[2],

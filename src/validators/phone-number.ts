@@ -32,7 +32,7 @@ const REGEX = {
  */
 export const validatePhoneNumber = (
   phoneNumber: string,
-  options: PhoneNumberValidationOptions = {}
+  options: PhoneNumberValidationOptions = {},
 ): boolean => {
   if (!phoneNumber) return false;
 
@@ -56,7 +56,7 @@ export const validatePhoneNumber = (
  */
 export const getCarrierInfo = (
   phoneNumber: string,
-  options: PhoneNumberValidationOptions = {}
+  options: PhoneNumberValidationOptions = {},
 ): Carrier | null => {
   if (!validatePhoneNumber(phoneNumber, options)) return null;
 

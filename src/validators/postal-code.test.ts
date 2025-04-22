@@ -15,7 +15,7 @@ describe("Postal Code Validator", () => {
 
     it("should validate all postal codes from the POSTAL_CODES_MAP", () => {
       // All postal codes in the map should be valid
-      Object.keys(POSTAL_CODES_MAP).forEach(code => {
+      Object.keys(POSTAL_CODES_MAP).forEach((code) => {
         expect(validatePostalCode(code)).toBe(true);
       });
     });
@@ -23,10 +23,10 @@ describe("Postal Code Validator", () => {
     it("should reject postal codes with invalid format", () => {
       // Too short
       expect(validatePostalCode("100")).toBe(false);
-      
+
       // Too long
       expect(validatePostalCode("10000")).toBe(false);
-      
+
       // Contains non-digit characters
       expect(validatePostalCode("100A")).toBe(false);
       expect(validatePostalCode("A000")).toBe(false);

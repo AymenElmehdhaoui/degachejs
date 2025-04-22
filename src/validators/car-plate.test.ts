@@ -41,18 +41,24 @@ describe("Car Plate Validators", () => {
 
     describe("with type option", () => {
       it("should validate only standard plates when type is 'standard'", () => {
-        expect(validateCarPlate("123 تونس 4567", { type: 'standard' })).toBe(true);
-        expect(validateCarPlate("RS 123 تونس", { type: 'standard' })).toBe(false);
+        expect(validateCarPlate("123 تونس 4567", { type: "standard" })).toBe(
+          true,
+        );
+        expect(validateCarPlate("RS 123 تونس", { type: "standard" })).toBe(
+          false,
+        );
       });
 
       it("should validate only special plates when type is 'special'", () => {
-        expect(validateCarPlate("RS 123 تونس", { type: 'special' })).toBe(true);
-        expect(validateCarPlate("123 تونس 4567", { type: 'special' })).toBe(false);
+        expect(validateCarPlate("RS 123 تونس", { type: "special" })).toBe(true);
+        expect(validateCarPlate("123 تونس 4567", { type: "special" })).toBe(
+          false,
+        );
       });
 
       it("should validate any valid plate when type is 'any'", () => {
-        expect(validateCarPlate("123 تونس 4567", { type: 'any' })).toBe(true);
-        expect(validateCarPlate("RS 123 تونس", { type: 'any' })).toBe(true);
+        expect(validateCarPlate("123 تونس 4567", { type: "any" })).toBe(true);
+        expect(validateCarPlate("RS 123 تونس", { type: "any" })).toBe(true);
       });
     });
 
@@ -63,8 +69,12 @@ describe("Car Plate Validators", () => {
       });
 
       it("should reject car plates with extra spaces in strict mode", () => {
-        expect(validateCarPlate("123  تونس  4567", { strict: true })).toBe(false);
-        expect(validateCarPlate(" 12 تونس 3456 ", { strict: true })).toBe(false);
+        expect(validateCarPlate("123  تونس  4567", { strict: true })).toBe(
+          false,
+        );
+        expect(validateCarPlate(" 12 تونس 3456 ", { strict: true })).toBe(
+          false,
+        );
       });
 
       it("should reject car plates with Latin instead of Arabic in strict mode", () => {

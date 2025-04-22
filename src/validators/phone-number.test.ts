@@ -48,6 +48,28 @@ describe("Phone Number Validators", () => {
       // @ts-ignore - Testing invalid input
       expect(validatePhoneNumber(undefined)).toBe(false);
     });
+
+    describe("strict mode", () => {
+      it("should validate correct phone numbers in strict mode", () => {
+        expect(validatePhoneNumber("20123456", { strict: true })).toBe(true);
+        expect(validatePhoneNumber("+21650123456", { strict: true })).toBe(true);
+      });
+
+      it("should reject phone numbers with spaces in strict mode", () => {
+        expect(validatePhoneNumber("20 123 456", { strict: true })).toBe(false);
+        expect(validatePhoneNumber("+216 20123456", { strict: true })).toBe(false);
+      });
+
+      it("should reject phone numbers with hyphens in strict mode", () => {
+        expect(validatePhoneNumber("20-123-456", { strict: true })).toBe(false);
+        expect(validatePhoneNumber("+216-20123456", { strict: true })).toBe(false);
+      });
+
+      it("should reject phone numbers with parentheses in strict mode", () => {
+        expect(validatePhoneNumber("(20)123456", { strict: true })).toBe(false);
+        expect(validatePhoneNumber("+216(20)123456", { strict: true })).toBe(false);
+      });
+    });
   });
 
   describe("getCarrierInfo", () => {
@@ -79,6 +101,19 @@ describe("Phone Number Validators", () => {
 
       // Non-numeric characters
       expect(getCarrierInfo("2012345a")).toBeNull();
+    });
+
+    describe("with strict mode", () => {
+      it("should return carrier information for valid numbers in strict mode", () => {
+        expect(getCarrierInfo("50123456", { strict: true })).toEqual(CARRIERS.OOREDOO);
+        expect(getCarrierInfo("+21650123456", { strict: true })).toEqual(CARRIERS.OOREDOO);
+      });
+
+      it("should return null for invalid format in strict mode", () => {
+        expect(getCarrierInfo("50 123 456", { strict: true })).toBeNull();
+        expect(getCarrierInfo("+216 50123456", { strict: true })).toBeNull();
+        expect(getCarrierInfo("50-123-456", { strict: true })).toBeNull();
+      });
     });
   });
 });

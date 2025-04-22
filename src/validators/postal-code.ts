@@ -11,6 +11,7 @@ const POSTAL_CODE_REGEX = /^\d{4}$/;
  * @returns boolean indicating if the postal code is valid
  */
 export const validatePostalCode = (postalCode: string): boolean => {
+  if (!postalCode) return false;
   if (!POSTAL_CODE_REGEX.test(postalCode)) return false;
   return postalCode in POSTAL_CODES_MAP;
 };

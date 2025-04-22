@@ -21,12 +21,16 @@ const isValid = validateCIN('12345678'); // true
 - 🔄 International format conversion
 - 📞 Smart formatting with country code
 - 🏢 Carrier detection
+- 🔒 Strict mode validation
 
 ```typescript
 import { validatePhoneNumber, formatPhoneNumber, getCarrierInfo } from 'degachejs';
 
 // Validate phone number
 const isValid = validatePhoneNumber('20123456'); // true
+
+// Validate with strict mode (no spaces or special characters allowed)
+const isStrictValid = validatePhoneNumber('20 123 456', { strict: true }); // false
 
 // Format phone number
 const formatted = formatPhoneNumber('20123456');
@@ -57,6 +61,32 @@ console.log(amount); // 1.234,560 دينار تونسي
 import { validatePostalCode } from 'degachejs';
 
 const isValid = validatePostalCode('1000'); // true for Tunis
+```
+
+### Car Plates 🚗
+```typescript
+import { validateCarPlate, getCarPlateInfo } from 'degachejs';
+
+// Validate car plate (Arabic format: XXX تونس XXXX)
+const isValid = validateCarPlate('123 تونس 4567'); // true
+
+// Validate special car plate (RS format)
+const isSpecialValid = validateCarPlate('RS 123 تونس', { type: 'special' }); // true
+
+// Validate with strict mode
+const isStrictValid = validateCarPlate('123  تونس  4567', { strict: true }); // false
+
+// Get car plate information
+const plateInfo = getCarPlateInfo('123 تونس 4567');
+console.log(plateInfo);
+// {
+//   type: 'standard',
+//   components: {
+//     prefix: '123',
+//     region: 'تونس',
+//     suffix: '4567'
+//   }
+// }
 ```
 
 ### Bank Account (RIB) Validation 🏦
@@ -106,14 +136,16 @@ pnpm add degachejs
 ## 🛠️ Usage
 
 ```typescript
-import { 
+import {
   validateCIN,
   formatPhoneNumber,
   validateTaxID,
   formatCurrency,
   validateRIB,
   getBankFromRIB,
-  formatDate
+  formatDate,
+  validateCarPlate,
+  getCarPlateInfo
 } from 'degachejs';
 
 // Validate CIN
@@ -136,6 +168,12 @@ const bankInfo = getBankFromRIB('12345678901234567890');
 
 // Format date
 const formattedDate = formatDate(new Date());
+
+// Validate car plate
+const isCarPlateValid = validateCarPlate('123 تونس 4567');
+
+// Get car plate information
+const carPlateInfo = getCarPlateInfo('123 تونس 4567');
 ```
 
 ## 🤝 Contributing
@@ -168,4 +206,4 @@ degache.js is MIT licensed. See the [LICENSE](LICENSE) file for details.
 
 ---
 
-Built with ❤️ for the Tunisian developer community 🇹🇳 
+Built with ❤️ for the Tunisian developer community 🇹🇳

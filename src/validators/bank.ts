@@ -1,4 +1,5 @@
 import { BANKS } from "../constants";
+import { Bank } from "../types";
 
 /**
  * Regular expressions for bank validation
@@ -48,7 +49,7 @@ export const validateRIB = (rib: string): boolean => {
  * @param rib - The 20-digit RIB number
  * @returns bank information or null if invalid
  */
-export const getBankFromRIB = (rib: string) => {
+export const getBankFromRIB = (rib: string): Bank | null => {
   if (!REGEX.RIB.test(rib)) return null;
 
   const bankCode = rib.slice(0, 2);
